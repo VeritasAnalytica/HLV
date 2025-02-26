@@ -72,6 +72,7 @@ Paste these values in the `.env` file:
 TWITTER_APPROVAL_DISCORD_BOT_TOKEN=your_bot_token_here
 TWITTER_APPROVAL_DISCORD_CHANNEL_ID=your_channel_id_here
 TWITTER_APPROVAL_CHECK_INTERVAL=60000
+OPENAI_API_KEY = your openai api key here
 ```
 
 ### Adding the Bot to Your Server
@@ -128,7 +129,7 @@ cd HLV
 
 Ensure that you have the required versions of Node.js, npm, and pnpm installed. Use the versions provided below:
 
-- **Node.js:** v23.3.0
+- **Node.js:** v22.12.0
 - **npm:** 10.9.0
 - **pnpm:** 9.15.2
 

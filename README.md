@@ -1,151 +1,198 @@
-# Eliza 🤖
 
-<div align="center">
-  <img src="./docs/static/img/eliza_banner.jpg" alt="Eliza Banner" width="100%" />
-</div>
 
-<div align="center">
+## Table of Contents
 
-📖 [Documentation](https://elizaos.github.io/eliza/) | 🎯 [Examples](https://github.com/thejoven/awesome-eliza)
+- [Setup Instructions](#setup-instructions)
+  - [Prerequisites](#prerequisites)
+  - [Creating Your Discord Bot](#creating-your-discord-bot)
+  - [Getting Required Values](#getting-required-values)
+  - [Configuration](#configuration)
+  - [Adding the Bot to Your Server](#adding-the-bot-to-your-server)
+  - [Enabling Privileged Gateway Intents](#Enabling-Privileged-Gateway-Intents)
+- [Training Your Character File](#training-your-character-file)
+- [Project Setup Instructions](#project-setup-instructions)
+  - [1. Clone the Repository](#1-clone-the-repository)
+  - [2. Navigate into the Project Directory](#2-navigate-into-the-project-directory)
+  - [3. Install Required Dependencies](#3-install-required-dependencies)
+  - [4. Install Project Dependencies](#4-install-project-dependencies)
+  - [5. Build the Project](#5-build-the-project)
+  - [6. Start the Project](#6-start-the-project)
+  - [7. (Optional) Run with tmux on Linux Cloud](#7-optional-run-with-tmux-on-linux-cloud)
 
-</div>
+---
 
-## 🌍 README Translations
-
-[中文说明](./README_CN.md) | [日本語の説明](./README_JA.md) | [한국어 설명](./README_KOR.md) | [Français](./README_FR.md) | [Português](./README_PTBR.md) | [Türkçe](./README_TR.md) | [Русский](./README_RU.md) | [Español](./README_ES.md) | [Italiano](./README_IT.md) | [ไทย](./README_TH.md) | [Deutsch](./README_DE.md) | [Tiếng Việt](./README_VI.md) | [עִברִית](https://github.com/elizaos/Elisa/blob/main/README_HE.md) | [Tagalog](./README_TG.md) | [Polski](./README_PL.md) | [Arabic](./README_AR.md) | [Hungarian](./README_HU.md) | [Srpski](./README_RS.md) | [Română](./README_RO.md) | [Nederlands](./README_NL.md)
-
-## 🚩 Overview
-
-<div align="center">
-  <img src="./docs/static/img/eliza_diagram.png" alt="Eliza Diagram" width="100%" />
-</div>
-
-## ✨ Features
-
-- 🛠️ Full-featured Discord, Twitter and Telegram connectors
-- 🔗 Support for every model (Llama, Grok, OpenAI, Anthropic, etc.)
-- 👥 Multi-agent and room support
-- 📚 Easily ingest and interact with your documents
-- 💾 Retrievable memory and document store
-- 🚀 Highly extensible - create your own actions and clients
-- ☁️ Supports many models (local Llama, OpenAI, Anthropic, Groq, etc.)
-- 📦 Just works!
-
-## Video Tutorials
-
-[AI Agent Dev School](https://www.youtube.com/watch?v=ArptLpQiKfI&list=PLx5pnFXdPTRzWla0RaOxALTSTnVq53fKL)
-
-## 🎯 Use Cases
-
-- 🤖 Chatbots
-- 🕵️ Autonomous Agents
-- 📈 Business Process Handling
-- 🎮 Video Game NPCs
-- 🧠 Trading
-
-## 🚀 Quick Start
+## Setup Instructions
 
 ### Prerequisites
 
-- [Python 2.7+](https://www.python.org/downloads/)
-- [Node.js 23+](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [pnpm](https://pnpm.io/installation)
+- A Discord account
+- Access to the [Discord Developer Portal](https://discord.com/developers/applications)
 
-> **Note for Windows Users:** [WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install-manual) is required.
+### Creating Your Discord Bot
 
-### Use the Starter (Recommended)
+1. Navigate to the [Discord Developer Portal](https://discord.com/developers/applications).
+2. Click on **"New Application"** and assign a name to your application.
+3. In the left sidebar, click on **"Bot"**.
+4. Click **"Add Bot"** to create a bot user.
+
+### Getting Required Values
+
+#### Bot Token (`TWITTER_APPROVAL_DISCORD_BOT_TOKEN`)
+
+1. In the Discord Developer Portal, go to your application's **"Bot"** section.
+2. Click **"Reset Token"** to generate a new token.
+3. Copy the token and save it securely.
+    - ⚠️ **NEVER share your bot token publicly.**
+    - ⚠️ **NEVER commit your bot token to version control.**
+
+#### Channel ID (`TWITTER_APPROVAL_DISCORD_CHANNEL_ID`)
+
+1. Open Discord.
+2. Enable Developer Mode:
+    - Go to **User Settings**.
+    - Navigate to **App Settings → Advanced**.
+    - Turn on **Developer Mode**.
+3. Right-click the channel where you want the bot to operate.
+4. Click **"Copy ID"** from the context menu.
+
+#### Check Interval (`TWITTER_APPROVAL_CHECK_INTERVAL`)
+
+- Set this value in milliseconds.
+- **Default:** `60000` (1 minute)
+- Adjust based on your needs:
+    - 30 seconds = `30000`
+    - 2 minutes = `120000`
+    - 5 minutes = `300000`
+
+### Configuration
+
+Paste these values in the `.env` file:
+
+```env
+TWITTER_APPROVAL_DISCORD_BOT_TOKEN=your_bot_token_here
+TWITTER_APPROVAL_DISCORD_CHANNEL_ID=your_channel_id_here
+TWITTER_APPROVAL_CHECK_INTERVAL=60000
+```
+
+### Adding the Bot to Your Server
+
+1. In the Discord [Developer Portal](https://discord.com/developers/applications), navigate to **"OAuth2"**.
+2. Under **"Scopes"**, select `bot`.
+3. Under **"Bot Permissions"**, select `administrator` (or assign the permissions that best suit your requirements).
+4. Copy the generated URL.
+5. Open the URL in your browser, select your server, and complete the authorization process.
+
+---
+
+### Enabling Privileged Gateway Intents
+1. In the Discord [Developer Portal](https://discord.com/developers/applications), navigate to **"Bot"**.
+2. Go to **Privileged Gateway Intents** section
+3. Enable all the 3 **Privileged Gateway Intents**
+4. Click on "save changes"
+
+## Training Your Character File
+
+If you wish to train your character file, you can leverage ChatGPT or any other large language model (LLM) to streamline the process. Simply follow these steps:
+
+1. Locate the `lottery.character.json` file in the `characters` folder.
+2. Copy its contents and paste them into ChatGPT (or another LLM interface).
+3. Additionally, include any other source files (like PDFs, websites) you’d like the model to consider.
+4. Ask the LLM to update your character file or provide enhancements based on the new character information.
+5. Review the generated suggestions and integrate them as needed to ensure your documentation is always up-to-date.
+
+This innovative approach encourages continuous improvement and ensures your project documentation evolves with your requirements.
+
+---
+
+## Project Setup Instructions
+
+Follow the steps below to properly set up and run the project on your server.
+
+### 1. Clone the Repository
+
+Run the following command in your terminal to clone the project repository:
 
 ```bash
-git clone https://github.com/elizaos/eliza-starter.git
-cd eliza-starter
-cp .env.example .env
-pnpm i && pnpm build && pnpm start
+git clone https://github.com/VeritasAnalytica/HLV
 ```
 
-Once the agent is running, you should see the message to run "pnpm start:client" at the end.
-Open another terminal and move to same directory and then run below command and follow the URL to chat to your agent.
+### 2. Navigate into the Project Directory
+
+Change into the project directory:
 
 ```bash
-pnpm start:client
+cd HLV
 ```
 
-Then read the [Documentation](https://elizaos.github.io/eliza/) to learn how to customize your Eliza.
+### 3. Install Required Dependencies
 
-### Manually Start Eliza (Only recommended if you know what you are doing)
+Ensure that you have the required versions of Node.js, npm, and pnpm installed. Use the versions provided below:
+
+- **Node.js:** v23.3.0
+- **npm:** 10.9.0
+- **pnpm:** 9.15.2
+
+Ensure that the versions match the required ones.
+
+### 4. Install Project Dependencies
+
+Once inside the project directory, install dependencies by running:
 
 ```bash
-# Clone the repository
-git clone https://github.com/elizaos/eliza.git
-
-# Checkout the latest release
-# This project iterates fast, so we recommend checking out the latest release
-git checkout $(git describe --tags --abbrev=0)
-# If the above doesn't checkout the latest release, this should work:
-# git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+pnpm install --no-frozen-lockfile
 ```
 
-### Start Eliza with Gitpod
+### 5. Build the Project
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/elizaos/eliza/tree/main)
-
-### Edit the .env file
-
-Copy .env.example to .env and fill in the appropriate values.
-
-```
-cp .env.example .env
-```
-
-Note: .env is optional. If you're planning to run multiple distinct agents, you can pass secrets through the character JSON
-
-### Automatically Start Eliza
-
-This will run everything to set up the project and start the bot with the default character.
+Build the project with the following command:
 
 ```bash
-sh scripts/start.sh
-```
-
-### Edit the character file
-
-1. Open `packages/core/src/defaultCharacter.ts` to modify the default character. Uncomment and edit.
-
-2. To load custom characters:
-    - Use `pnpm start --characters="path/to/your/character.json"`
-    - Multiple character files can be loaded simultaneously
-3. Connect with X (Twitter)
-    - change `"clients": []` to `"clients": ["twitter"]` in the character file to connect with X
-
-### Manually Start Eliza
-
-```bash
-pnpm i
 pnpm build
-pnpm start
-
-# The project iterates fast, sometimes you need to clean the project if you are coming back to the project
-pnpm clean
 ```
 
-#### Additional Requirements
+### 6. Start the Project
 
-You may need to install Sharp. If you see an error when starting up, try installing it with the following command:
+Finally, run the project using the following command, replacing `yourCharachterName` with your desired character file name from the `characters` folder:
 
+```bash
+pnpm start --character="characters/Lottery.character.json"
 ```
-pnpm install --include=optional sharp
-```
 
-### Community & contact
+### 7. (Optional but Recommended) Run with tmux on Linux Cloud
 
-- [GitHub Issues](https://github.com/elizaos/eliza/issues). Best for: bugs you encounter using Eliza, and feature proposals.
-- [Discord](https://discord.gg/ai16z). Best for: sharing your applications and hanging out with the community.
+Since the project will be deployed on a Linux cloud environment, it is recommended to use **tmux** to ensure the bot continues running even after you disconnect from your terminal session. Follow these steps:
 
-## Contributors
+1. **Install tmux (if not already installed):**
 
-<a href="https://github.com/elizaos/eliza/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=elizaos/eliza" />
-</a>
+   ```bash
+   sudo apt-get update && sudo apt-get install tmux
+   ```
+   *(For other distributions, use the appropriate package manager command.)*
 
-## Star History
+2. **Create a new tmux session:**
 
-[![Star History Chart](https://api.star-history.com/svg?repos=elizaos/eliza&type=Date)](https://star-history.com/#elizaos/eliza&Date)
+   ```bash
+   tmux new -s bot_session
+   ```
+
+3. **Start your project within the tmux session:**
+
+   ```bash
+   pnpm start --character="characters/Lottery.character.json"
+   ```
+
+4. **Detach from the tmux session:**  
+   Press `Ctrl+b` then `d`. This will leave your bot running in the background.
+
+5. **Reattach to your tmux session when needed:**
+
+   ```bash
+   tmux attach -t bot_session
+   ```
+
+This strategic approach ensures your application remains highly available, providing uninterrupted service in a cloud-based environment.
+
+---
+
+
+Happy coding!

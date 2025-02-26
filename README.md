@@ -94,7 +94,7 @@ TWITTER_APPROVAL_CHECK_INTERVAL=60000
 
 If you wish to train your character file, you can leverage ChatGPT or any other large language model (LLM) to streamline the process. Simply follow these steps:
 
-1. Locate the `lotter.character.json` file in the `characters` folder.
+1. Locate the `lottery.character.json` file in the `characters` folder.
 2. Copy its contents and paste them into ChatGPT (or another LLM interface).
 3. Additionally, include any other source files (like PDFs, websites) you’d like the model to consider.
 4. Ask the LLM to update your character file or provide enhancements based on the new character information.
@@ -113,7 +113,7 @@ Follow the steps below to properly set up and run the project on your server.
 Run the following command in your terminal to clone the project repository:
 
 ```bash
-git clone https://github.com/VeritasAnalytica/HastaLaVista-
+git clone https://github.com/VeritasAnalytica/HLV
 ```
 
 ### 2. Navigate into the Project Directory
@@ -121,45 +121,16 @@ git clone https://github.com/VeritasAnalytica/HastaLaVista-
 Change into the project directory:
 
 ```bash
-cd HastaLaVista-
+cd HLV
 ```
 
 ### 3. Install Required Dependencies
 
 Ensure that you have the required versions of Node.js, npm, and pnpm installed. Use the versions provided below:
 
-- **Node.js:** v22.12.0
+- **Node.js:** v23.3.0
 - **npm:** 10.9.0
 - **pnpm:** 9.15.2
-
-If you haven’t installed them yet, use the following commands:
-
-- **Install Node.js:**
-
-  ```bash
-  nvm install 22.12.0
-  nvm use 22.12.0
-  ```
-
-- **Install or Update npm:**
-
-  ```bash
-  npm install -g npm@10.9.0
-  ```
-
-- **Install pnpm:**
-
-  ```bash
-  npm install -g pnpm@9.15.2
-  ```
-
-Verify the installation by running:
-
-```bash
-node -v
-npm -v
-pnpm -v
-```
 
 Ensure that the versions match the required ones.
 
